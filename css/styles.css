@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Wallpoet');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 2.5rem;
+}
+
+.banner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  text-align: center;
+}

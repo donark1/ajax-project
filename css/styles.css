@@ -1,48 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Wallpoet');
-
-
-body {
-  font-size: 1.75rem;
-  font-family: 'Wallpoet', sans-serif;
-  line-height: 1;
+.home-page-form{
+  padding-bottom: 5%;
 }
 
-.basketballbanner, .logo {
-  padding: 0;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto;
+.season-select {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 5%;
 }
 
-.banner {
-  position: relative;
-  color: black;
+.home-page-seasons {
+  text-align: center;
+  height: 3rem;
+  width: 75%;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  background-image: url("../images/basketballbanner.jpg");
+  color:white;
 }
-
-.left {
-  position: absolute;
-  bottom: 5%;
-  left:15%;
-}
-
-.right {
-  position: absolute;
-  bottom: 5%;
-  right: 15%;
-}
-
-.center {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-.logo {
-  padding: 0;
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    width: 100%;
-  }

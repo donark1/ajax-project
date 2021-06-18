@@ -10,24 +10,31 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="banner">
-      <img class="basketballbanner" src="./images/basketballbanner4.jpg" alt="Basketball Banner">
-      <div class="row align-items-center">
-        <div class="left width-30 text-align">HOME</div>
-        <div class="center width-30 text-align">TEAM</div>
-        <div class="right width-30 text-align">PLAYERS</div>
+    <header>
+      <!-- <div class="header-profile-list hidden"> -->
+        <div class="row banner-text-links">
+          <div class="left">HOME</div>
+          <div class="center">TEAM</div>
+          <div class="right">PLAYERS<div>
+        </div>
+      </div>
+    </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <img class="logo" src="./images/hoopslalogo.jpg" alt="Hoopsla Logo">
+      </div>
+      <div class="row">
+        <div class="block">
+          <form class="home-page-form">
+            <label class="season-select">SELECT A SEASON:</label>
+          </form>
+          <select name="seasons" id="seasons" class="home-page-seasons">
+            <option value="Seasons">SEASONS</option>
+          </select>
+        </div>
       </div>
     </div>
-    <div>
-      <img class="logo" src="./images/hoopslalogo.jpg" alt="Hoopsla Logo">
-    </div>
-  </header>
-  <div class="container">
-
-
-  </div>
-  <main>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

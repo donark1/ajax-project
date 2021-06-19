@@ -37,5 +37,14 @@ header {
   text-align: center;
   width: 50%;
   padding-top: 5%;
+}
+
+.sub-description {
+  text-align: center;
   padding-bottom: 5%;
+}
+
+.block {
+  text-align: center;
+  padding-bottom: 3%;
 }

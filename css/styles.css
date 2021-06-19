@@ -2,18 +2,42 @@
   padding-bottom: 5%;
 }
 
-.season-select {
+.teams-select {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 5%;
 }
 
-.home-page-seasons {
-  text-align: center;
+.home-page-teams {
+  text-align-last:center;
   height: 3rem;
   width: 75%;
   border-radius: 1.25rem;
   font-size: 1rem;
   background-image: url("../images/basketballbanner.jpg");
   color:white;
+}
+
+.home-page-players {
+  text-align-last:center;
+  height: 3rem;
+  width: 100%;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  background-image: url("../images/basketballbanner.jpg");
+  color:white;
+}
+
+.home-page-players::placeholder {
+  color: white;
+}
+
+.search-players {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+.hidden {
+  display: none;
 }

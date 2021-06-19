@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-      <!-- <div class="header-profile-list hidden"> -->
+      <div class="hidden">
         <div class="row banner-text-links">
           <div class="left">HOME</div>
           <div class="center">TEAM</div>
@@ -24,18 +24,36 @@
       <div class="row">
         <img class="logo" src="./images/hoopslalogo.jpg" alt="Hoopsla Logo">
       </div>
+      <div>
+        <p class="sub-description">NBA STATS APP SIMPLIFIED</p>
+      </div>
       <div class="row">
         <div class="block">
           <form class="home-page-form">
-            <label class="season-select">SELECT A SEASON:</label>
+            <label class="teams-select">SELECT A TEAM:</label>
           </form>
-          <select name="seasons" id="seasons" class="home-page-seasons">
-            <option value="Seasons">SEASONS</option>
+          <select name="teams" id="teams" class="home-page-teams">
+            <option value="Teams">TEAM</option>
           </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="block">
+          <h2>OR</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="block">
+          <form class="home-page-form" action="">
+            <label class="search-players">SEARCH A PLAYER:</label>
+          </form>
+            <input type="search" name="search-player" id="search-player"
+              class="home-page-players" placeholder="Type Player Name">
         </div>
       </div>
     </div>
   </main>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

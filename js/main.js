@@ -1,22 +1,32 @@
 // Basketball Teams
-$.ajax({
-  method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/teams',
-  data: 'json',
-  success: function (data) {
-    console.log("Team:", data);
-  },
-})
+
+function getTeams() {
+  $.ajax({
+    method: 'GET',
+    url: 'https://www.balldontlie.io/api/v1/teams',
+    data: 'json',
+    success: function (data) {
+      console.log("Team:", data);
+    },
+  })
+}
+
+getTeams();
 
 // Basketball Players
-$.ajax({
-  method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/players',
-  data: 'json',
-  success: function (data) {
-    console.log("Player:", data);
-  },
-})
+
+function getPlayers() {
+  $.ajax({
+    method: 'GET',
+    url: 'https://www.balldontlie.io/api/v1/players',
+    data: 'json',
+    success: function (data) {
+      console.log("Player:", data);
+    },
+  })
+}
+
+getPlayers();
 
 // BasketBall Game Stats
 $.ajax({
@@ -31,9 +41,9 @@ $.ajax({
 // Basketball Player Season Averages Example
 $.ajax({
   method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=1&player_ids[]=2 ',
+  url: 'https://www.balldontlie.io/api/v1/stats?seasons[]=2015',
   data: 'json',
   success: function (data) {
-    console.log("Season Averages:", data);
+    console.log("Seasons:", data);
   },
 })

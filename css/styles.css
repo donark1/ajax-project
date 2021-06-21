@@ -1,14 +1,14 @@
-.home-page-form{
+.homepageteamform, .homepageplayerform{
   padding-bottom: 5%;
 }
 
-.teams-select {
+.teamsselect {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 5%;
 }
 
-.home-page-teams {
+.homepageteams {
   text-align-last:center;
   height: 3rem;
   width: 75%;
@@ -18,7 +18,11 @@
   color:white;
 }
 
-.home-page-players {
+.homepageteams option {
+  color:black;
+}
+
+.homepageplayers {
   text-align-last:center;
   height: 3rem;
   width: 100%;
@@ -28,11 +32,11 @@
   color:white;
 }
 
-.home-page-players::placeholder {
+.homepageplayers::placeholder {
   color: white;
 }
 
-.search-players {
+.searchplayers {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 5%;

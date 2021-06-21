@@ -1,49 +1,23 @@
+const $homepageteams = document.querySelector('.homepageteams');
+
 // Basketball Teams
 
 function getTeams() {
-  $.ajax({
-    method: 'GET',
-    url: 'https://www.balldontlie.io/api/v1/teams',
-    data: 'json',
-    success: function (data) {
-      console.log("Team:", data);
-    },
-  })
-}
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams');
+  xhttp.responseType = 'json',
 
+  xhttp.addEventListener('load', function () {
+    for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
+      var $option = document.createElement('option');
+      $option.textContent = xhttp.response.data[i].abbreviation;
+      $homepageteams.appendChild($option);
+    }
+  });
+  xhttp.addEventListener('error', function () {
+    failed();
+  });
+  xhttp.send();
+
+}
 getTeams();
-
-// Basketball Players
-
-function getPlayers() {
-  $.ajax({
-    method: 'GET',
-    url: 'https://www.balldontlie.io/api/v1/players',
-    data: 'json',
-    success: function (data) {
-      console.log("Player:", data);
-    },
-  })
-}
-
-getPlayers();
-
-// BasketBall Game Stats
-$.ajax({
-  method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/stats',
-  data: 'json',
-  success: function (data) {
-    console.log("Game Stats:", data);
-  },
-})
-
-// Basketball Player Season Averages Example
-$.ajax({
-  method: 'GET',
-  url: 'https://www.balldontlie.io/api/v1/stats?seasons[]=2015',
-  data: 'json',
-  success: function (data) {
-    console.log("Seasons:", data);
-  },
-})

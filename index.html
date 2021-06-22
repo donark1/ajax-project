@@ -29,12 +29,14 @@
       </div>
       <div class="row">
         <div class="block">
-          <form class="homepageteamform">
+          <div class="homepageteamform">
             <label class="teamsselect">SELECT A TEAM:</label>
+          </div>
+          <form>
+            <select name="teams" id="teams" class="homepageteams">
+              <option class="teamoption" value="Teams">TEAM</option>
+            </select>
           </form>
-          <select name="teams" id="teams" class="homepageteams">
-            <option class="teamoption" value="Teams">TEAM</option>
-          </select>
         </div>
       </div>
       <div class="row">
@@ -44,11 +46,16 @@
       </div>
       <div class="row">
         <div class="block">
-          <form class="homepageplayerform" action="">
+          <div class="homepageplayerform" action="">
             <label class="searchplayers">SEARCH A PLAYER:</label>
-          </form>
+          </div>
+          <form class="playersearchform">
             <input type="search" name="searchplayer" id="searchplayer"
               class="homepageplayers" placeholder="Type Player Name">
+            <button type="submit" class="searchbutton" id="searchbutton" data-view="search">
+            <i class="fas fa-search"></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>

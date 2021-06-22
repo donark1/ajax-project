@@ -12,6 +12,7 @@
   text-align-last:center;
   height: 3rem;
   width: 75%;
+  border: none;
   border-radius: 1.25rem;
   font-size: 1rem;
   background-image: url("../images/basketballbanner.jpg");
@@ -22,14 +23,38 @@
   color:black;
 }
 
+.playersearchform {
+  margin: 1.2rem 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.homepageplayers, .searchbutton {
+  width: 100%;
+}
+
 .homepageplayers {
   text-align-last:center;
+  padding: 0 1rem;
   height: 3rem;
-  width: 100%;
-  border-radius: 1.25rem;
+  border: none;
+  border-top-left-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+  outline: 0;
   font-size: 1rem;
   background-image: url("../images/basketballbanner.jpg");
   color:white;
+}
+
+.searchbutton {
+  width: 65px;
+  height: 3rem;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  background-image: url("../images/basketballbanner.jpg");
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
 }
 
 .homepageplayers::placeholder {

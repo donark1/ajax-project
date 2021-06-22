@@ -1,6 +1,6 @@
 const $homepageteams = document.querySelector('.homepageteams');
 
-// Basketball Teams
+// Dropdown Menu of Basketball Teams
 
 function getTeams() {
   const xhttp = new XMLHttpRequest();

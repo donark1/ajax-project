@@ -70,3 +70,8 @@
 .hidden {
   display: none;
 }
+
+.overflow {
+  overflow: auto;
+  margin-right: 25px;
+}

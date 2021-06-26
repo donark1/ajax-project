@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="js/xmlToJson.js"></script>
   <title>Hoopsla</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -11,86 +12,103 @@
 </head>
 <body>
     <header>
-      <div class="headerlinks hidden">
-        <div class="row banner-text-links">
-          <div class="left">HOME</div>
-          <div class="center">TEAM</div>
-          <div class="right">PLAYERS<div>
+      <div class="headerlink hidden">
+        <div class="row banner-text-link">
+          <div class="center"><i class="fas fa-home fa-1x"></i>HOME</div>
         </div>
       </div>
     </header>
-  <div>
+  <main>
     <div class="container">
+
       <div class="row">
         <img class="logo" src="./images/hoopslalogo.jpg" alt="Hoopsla Logo">
       </div>
-      <div>
-        <p class="sub-description">NBA STATS APP SIMPLIFIED</p>
-      </div>
-      <div class="row">
-        <div class="block">
-          <div class="homepageteamform">
-            <label class="teamsselect">SELECT A TEAM:</label>
-          </div>
-          <form>
-            <select name="teams" id="teams" class="homepageteams">
-              <option class="teamoption" value="Teams">TEAM</option>
-            </select>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="block">
-          <h2>OR</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="block">
-          <div class="homepageplayerform" action="">
-            <label class="searchplayers">SEARCH A PLAYER:</label>
-          </div>
-          <form class="playersearchform">
-            <input type="search" name="searchplayer" id="searchplayer"
-              class="homepageplayers" placeholder="Type Player Name">
-            <button type="submit" class="searchbutton" id="searchbutton" data-view="search">
-            <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
 
-    <div data-view="profile" class="margin-top hidden profile">
-      <div class="row">
-        <h1 class="playername">Player Name</h1>
-      </div>
-      <div class="block player-info">
-        <h3 class="team">Team: </h3>
-        <h3 class="position">Position: </h3>
-      </div>
-      <div class="row background-color profile-projection-header align-items-center margin-top">Stats Past 5 Years:</div>
-          <div class="overflow">
-            <table class="margin-top-half tablestats">
-              <thead>
-                <tr>
-                  <th>Season</th>
-                  <th>PPG</th>
-                  <th>APG</th>
-                  <th>RPG</th>
-                  <th>SPG</th>
-                  <th>BPG</th>
-                  <th>FT%</th>
-                  <th>3PT%</th>
-                  <th>TO</th>
-                </tr>
-              </thead>
-              <tbody class="tablestatsbody"></tbody>
-            </table>
+      <div class="homepage">
+
+        <div>
+          <p class="sub-description">NBA STATS APP SIMPLIFIED</p>
+        </div>
+
+        <div class="row">
+          <div class="block">
+            <div class="homepageteamform">
+              <label class="teamsselect">SELECT A TEAM:</label>
+            </div>
+            <form>
+              <select name="teams" id="teams" class="homepageteams">
+                <option class="teamoption" value="Teams">TEAM</option>
+              </select>
+            </form>
           </div>
+        </div>
+
+        <div class="row">
+          <div class="block">
+            <h2>OR</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="block">
+            <div class="homepageplayerform" action="">
+              <label class="searchplayers">SEARCH A PLAYER:</label>
+            </div>
+            <form class="playersearchform">
+              <input type="search" name="searchplayer" id="searchplayer"
+                class="homepageplayers" placeholder="Type Player Name">
+              <button type="submit" class="searchbutton" id="searchbutton" data-view="search">
+              <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
       </div>
+
+      <div class="teamprofilepage" class="hidden teamprofile">
+        <div class="row"></div>
+      </div>
+
+      <div class="hidden playerprofilepage">
+
+        <div class="row">
+          <h1 class="playername">Player Name</h1>
+        </div>
+
+        <div class="block player-info">
+          <h2 class="team">Team: </h2>
+          <h2 class="position">Position: </h2>
+        </div>
+
+        <div class="row">
+          <h3>Stats:</h3>
+        </div>
+
+        <div class="overflow">
+          <table class="margin-top-half tablestats">
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>PPG</th>
+                <th>APG</th>
+                <th>RPG</th>
+                <th>SPG</th>
+                <th>BPG</th>
+                <th>FT%</th>
+                <th>3PT%</th>
+                <th>TO</th>
+              </tr>
+            </thead>
+            <tbody class="tablestatsbody"></tbody>
+          </table>
+        </div>
+
+      </div>
+
     </div>
   </main>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

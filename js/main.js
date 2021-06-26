@@ -1,12 +1,26 @@
 const $homepageteams = document.querySelector('.homepageteams');
 const $playersearchform = document.querySelector('.playersearchform');
+const $homepageplayers = document.querySelector('.homepageplayers');
 const $tablestats = document.querySelector('.tablestats');
 const $tablestatsbody = document.querySelector('.tablestatsbody');
 const $playername = document.querySelector('.playername');
 const $team = document.querySelector('.team');
 const $position = document.querySelector('.position');
-const $headerlinks = document.querySelector('.headerlinks');
-const dataview = document.querySelectorAll('[data-view]');
+const $headerlink = document.querySelector('.headerlink');
+const $playerprofilepage = document.querySelector('.playerprofilepage');
+const $homepage = document.querySelector('.homepage');
+
+const previousDataJson = localStorage.getItem('playerData');
+if (previousDataJson !== null) {
+const data = JSON.parse(previousDataJson);
+}
+
+function profileStorage(event) {
+  const dataJson = JSON.stringify(data);
+  localStorage.setItem('playerData', dataJson);
+}
+
+window.addEventListener('beforeunload', profileStorage);
 
 // Dropdown Menu of Basketball Teams
 
@@ -14,10 +28,9 @@ function getTeams() {
   const xhttp = new XMLHttpRequest();
   xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams');
   xhttp.responseType = 'json',
-
   xhttp.addEventListener('load', function () {
     for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
-      var $option = document.createElement('option');
+      const $option = document.createElement('option');
       $option.textContent = xhttp.response.data[i].abbreviation;
       $homepageteams.appendChild($option);
     }
@@ -26,9 +39,9 @@ function getTeams() {
     failed();
   });
   xhttp.send();
-
 }
 getTeams();
+
 
 
 // Player Search Form
@@ -43,14 +56,14 @@ function ballDontLie(player) {
     const storage = [];
     if (xhttp.status === 200) {
       $tablestatsbody.innerHTML = '';
-      var firstLast = player.split(' ');
+      const firstLast = player.split(' ');
       if ((firstLast[0].toLowerCase() === xhttp.response.data[0].first_name.toLowerCase()) && (firstLast[1].toLowerCase() === xhttp.response.data[0].last_name.toLowerCase())) {
         var playerID
         playerID = xhttp.response.data[0].id;
         $playername.textContent = xhttp.response.data[0].first_name + ' ' + xhttp.response.data[0].last_name;
         $team.textContent = 'Team: ' + xhttp.response.data[0].team.abbreviation;
         $position.textContent = 'Position: ' + xhttp.response.data[0].position;
-        for (var i = 2015; i <= 2020; i++) {
+        for (var i = 2010; i <= 2020; i++) {
           ballDontLieSeasonAvg(i, playerID);
         }
       } else {
@@ -61,7 +74,7 @@ function ballDontLie(player) {
   xhttp.addEventListener('error', function () {
     failed();
   });
-  xhttp.send();
+    xhttp.send();
 }
 
 function ballDontLieSeasonAvg(season, id) {
@@ -73,13 +86,12 @@ function ballDontLieSeasonAvg(season, id) {
     const $tr = document.createElement('tr');
     $tr.classList.add(queryData[0]);
     for (var i = 0; i <= queryData.length - 1; i++) {
-      if (xhr.response.data[0] !== undefined) {
+      if (xhttp.response.data[0] !== undefined) {
         const $td = document.createElement('td');
         $td.textContent = xhttp.response.data[0][queryData[i]];
         $td.classList.add(queryData[i]);
         $tr.appendChild($td);
       }
-
     }
     $tablestatsbody.appendChild($tr);
 
@@ -98,13 +110,13 @@ function ballDontLieSeasonAvg(season, id) {
 $playersearchform.addEventListener('submit', function (e) {
   $tablestatsbody.innerHTML = '';
   e.preventDefault();
-  ballDontLie($playersearchform.value);
-  storage = [];
-  dataview[0].classList.add('hidden');
-  dataview[1].classList.remove('hidden');
-  $headerlinks.classList.remove('hidden');
+  ballDontLie($homepageplayers.value);
+  const storage = [];
+  $homepage.classList.add('hidden');
+  $playerprofilepage.classList.remove('hidden');
+  $headerlink.classList.remove('hidden');
   if ($playername.textContent === 'Player Name') {
     $playername.textContent = 'Player not found. Please try again.'
   }
-  $playersearchform.value = '';
+  $homepageplayers.value = '';
 });

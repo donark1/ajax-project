@@ -6,8 +6,9 @@ const $tablestatsbody = document.querySelector('.tablestatsbody');
 const $playername = document.querySelector('.playername');
 const $team = document.querySelector('.team');
 const $position = document.querySelector('.position');
-const $headerlinks = document.querySelector('.headerlinks');
-const dataview = document.querySelectorAll('[data-view]');
+const $headerlink = document.querySelector('.headerlink');
+const $playerprofilepage = document.querySelector('.playerprofilepage');
+const $homepage = document.querySelector('.homepage');
 
 const previousDataJson = localStorage.getItem('playerData');
 if (previousDataJson !== null) {
@@ -38,7 +39,6 @@ function getTeams() {
     failed();
   });
   xhttp.send();
-  console.log("teams:", xhttp);
 }
 getTeams();
 
@@ -75,8 +75,6 @@ function ballDontLie(player) {
     failed();
   });
     xhttp.send();
-  console.log("Player:", xhttp);
-  console.log("Storage:", storage);
 }
 
 function ballDontLieSeasonAvg(season, id) {
@@ -94,7 +92,6 @@ function ballDontLieSeasonAvg(season, id) {
         $td.classList.add(queryData[i]);
         $tr.appendChild($td);
       }
-
     }
     $tablestatsbody.appendChild($tr);
 
@@ -115,33 +112,11 @@ $playersearchform.addEventListener('submit', function (e) {
   e.preventDefault();
   ballDontLie($homepageplayers.value);
   const storage = [];
-  dataview[0].classList.add('hidden');
-  dataview[1].classList.remove('hidden');
-  $headerlinks.classList.remove('hidden');
+  $homepage.classList.add('hidden');
+  $playerprofilepage.classList.remove('hidden');
+  $headerlink.classList.remove('hidden');
   if ($playername.textContent === 'Player Name') {
     $playername.textContent = 'Player not found. Please try again.'
   }
   $homepageplayers.value = '';
 });
-
-//loading page while the XMLHttpRequest is being made
-function loading() {
-  for (var i = 0; i <= dataView.length - 1; i++) {
-    if (i !== 6) {
-      dataView[i].classList.add('hidden');
-    } else {
-      dataView[i].classList.remove('hidden');
-    }
-  }
-}
-
-//loads different pages depending on the click event that is triggered
-function viewSwap(index) {
-  for (var i = 0; i <= dataView.length - 1; i++) {
-    if (i === index) {
-      dataView[i].classList.remove('hidden');
-    } else {
-      dataView[i].classList.add('hidden');
-    }
-  }
-}

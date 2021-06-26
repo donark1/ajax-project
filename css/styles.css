@@ -1,11 +1,11 @@
 .homepageteamform, .homepageplayerform{
-  padding-bottom: 5%;
+  padding-bottom: 2%;
 }
 
 .teamsselect {
   font-size: 1.5rem;
   text-align: center;
-  padding-bottom: 5%;
+  padding-bottom: 2%;
 }
 
 .homepageteams {
@@ -27,6 +27,10 @@
   margin: 1.2rem 0;
   display: flex;
   align-items: stretch;
+}
+
+.playername {
+  text-align: center;
 }
 
 .homepageplayers, .searchbutton {
@@ -74,4 +78,13 @@
 .overflow {
   overflow: auto;
   margin-right: 25px;
+}
+
+table {
+  width: 75%;
+  margin: auto;
+}
+
+tr {
+  text-align: center;
 }

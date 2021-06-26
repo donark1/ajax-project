@@ -22,12 +22,12 @@ header {
   margin: auto;
 }
 
-.banner-text-links {
+.banner-text-link {
   align-items: center;
-  height: 175%;
+  color: white;
 }
 
-.left, .right, .center {
+.center {
   width:30%;
   margin: auto;
   text-align: center;
@@ -36,15 +36,15 @@ header {
 .logo {
   text-align: center;
   width: 50%;
-  padding-top: 5%;
+  padding-top: 2%;
 }
 
 .sub-description {
   text-align: center;
-  padding-bottom: 5%;
+  padding-bottom: 2%;
 }
 
 .block {
   text-align: center;
-  padding-bottom: 3%;
+  padding-bottom: 2%;
 }

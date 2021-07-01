@@ -14,7 +14,7 @@
     <header>
       <div class="headerlink hidden">
         <div class="row banner-text-link">
-          <div class="center"><i class="fas fa-home fa-1x"></i>HOME</div>
+          <div class="center"><a href="index.html"><i class="fas fa-home fa-1x"></i>HOME</a></div>
         </div>
       </div>
     </header>
@@ -36,10 +36,11 @@
             <div class="homepageteamform">
               <label class="teamsselect">SELECT A TEAM:</label>
             </div>
-            <form>
+            <form class="teamselectform">
               <select name="teams" id="teams" class="homepageteams">
                 <option class="teamoption" value="Teams">TEAM</option>
               </select>
+              <button type="submit" id="nextbutton" class="nextbutton"><i class="fas fa-angle-right"></i></button>
             </form>
           </div>
         </div>
@@ -57,7 +58,7 @@
             </div>
             <form class="playersearchform">
               <input type="search" name="searchplayer" id="searchplayer"
-                class="homepageplayers" placeholder="Type Player Name">
+                class="homepageplayers" placeholder="TYPE PLAYER NAME" autocomplete="off">
               <button type="submit" class="searchbutton" id="searchbutton" data-view="search">
               <i class="fas fa-search"></i>
               </button>
@@ -67,8 +68,29 @@
 
       </div>
 
-      <div class="teamprofilepage" class="hidden teamprofile">
-        <div class="row"></div>
+      <div class="hidden teamprofilepage">
+
+        <div class="row">
+          <h1 class="teamname">Team Name</h1>
+        </div>
+
+        <div class="row">
+          <h3>Info:</h3>
+        </div>
+
+        <div class="overflow">
+          <table class="margin-top-half teaminfo">
+            <thead>
+              <tr>
+                <th>City</th>
+                <th>Conference</th>
+                <th>Division</th>
+              </tr>
+            </thead>
+            <tbody class="teaminfobody"></tbody>
+          </table>
+        </div>
+
       </div>
 
       <div class="hidden playerprofilepage">
@@ -107,7 +129,19 @@
 
       </div>
 
+      <!-- <div class="loading" class="hidden">
+        <br>
+        <br>
+        <div class="row">
+          <img src="./images/basketballloading.gif" alt="Loading">
+        </div>
+        <div class="row text-align">
+           <h2>Loading...</h2>
+        </div>
+      </div> -->
+
     </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

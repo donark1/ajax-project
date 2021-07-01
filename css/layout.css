@@ -33,6 +33,11 @@ header {
   text-align: center;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .logo {
   text-align: center;
   width: 50%;

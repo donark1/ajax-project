@@ -2,29 +2,17 @@
   padding-bottom: 2%;
 }
 
-.teamsselect {
+.teamsselect, .searchplayers  {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 2%;
-}
-
-.homepageteams {
-  text-align-last:center;
-  height: 3rem;
-  width: 75%;
-  border: none;
-  border-radius: 1.25rem;
-  font-size: 1rem;
-  background-image: url("../images/basketballbanner.jpg");
-  color:white;
 }
 
 .homepageteams option {
   color:black;
 }
 
-.playersearchform {
-  margin: 1.2rem 0;
+.playersearchform, .teamselectform {
   display: flex;
   align-items: stretch;
 }
@@ -33,11 +21,7 @@
   text-align: center;
 }
 
-.homepageplayers, .searchbutton {
-  width: 100%;
-}
-
-.homepageplayers {
+.homepageplayers, .homepageteams {
   text-align-last:center;
   padding: 0 1rem;
   height: 3rem;
@@ -48,9 +32,10 @@
   font-size: 1rem;
   background-image: url("../images/basketballbanner.jpg");
   color:white;
+  width: 100%;
 }
 
-.searchbutton {
+.searchbutton, .nextbutton {
   width: 65px;
   height: 3rem;
   font-size: 1.5rem;
@@ -63,12 +48,6 @@
 
 .homepageplayers::placeholder {
   color: white;
-}
-
-.searchplayers {
-  font-size: 1.5rem;
-  text-align: center;
-  padding-bottom: 5%;
 }
 
 .hidden {

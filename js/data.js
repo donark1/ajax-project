@@ -5,7 +5,6 @@ const data = {
   profile: {
     name: '',
     position: '',
-    depth: '',
   },
   entries: []
 }

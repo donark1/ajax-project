@@ -5,16 +5,16 @@ const $homepage = document.querySelector('.homepage');
 const $homepageteams = document.querySelector('.homepageteams');
 const $loading = document.querySelector('.loading');
 const $playername = document.querySelector('.playername');
-const $playerprofilepage = document.querySelector('playerprofilepage');
+const $playerprofilepage = document.querySelector('.playerprofilepage');
 const $playersearchform = document.querySelector('.playersearchform');
 const $position = document.querySelector('.position');
 const $tablestats = document.querySelector('.tablestats');
 const $tablestatsbody = document.querySelector('.tablestatsbody');
 const $team = document.querySelector('.team');
 const $teaminfobody = document.querySelector('.teaminfobody');
-const $teamname = document.querySelector('teamname');
-const $teamprofilepage = document.querySelector('teamprofilepage');
-const $teamoption = document.querySelector('teamoption');
+const $teamname = document.querySelector('.teamname');
+const $teamprofilepage = document.querySelector('.teamprofilepage');
+const $teamselectform = document.querySelector('.teamselectform');
 
 const previousDataJson = localStorage.getItem('playerData');
 if (previousDataJson !== null) {
@@ -37,7 +37,7 @@ function getTeams() {
   xhttp.addEventListener('load', function () {
     for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
       const $option = document.createElement('option');
-      $option.textContent = xhttp.response.data[i].abbreviation;
+      $option.textContent = xhttp.response.data[i].full_name;
       $homepageteams.appendChild($option);
     }
   });
@@ -49,6 +49,41 @@ function getTeams() {
 }
 getTeams();
 
+// Get all players
+
+function getAllPlayers() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/players');
+  xhttp.responseType = 'json',
+
+  xhttp.addEventListener('error', function () {
+    failed();
+  });
+  xhttp.send();
+  console.log("All Players:", xhttp);
+}
+getAllPlayers();
+
+// Team Search Form
+
+function ballDontLieTeam(team) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams');
+  xhttp.responseType = 'json';
+  xhttp.addEventListener('loadstart', function () {
+  });
+  xhttp.addEventListener('load', function () {
+    const storage = [];
+    if (xhttp.status === 200) {
+      $teamname.textContent = team;
+      }
+  });
+  xhttp.addEventListener('error', function () {
+    failed();
+  });
+  xhttp.send();
+  console.log("teams:", xhttp);
+}
 
 // Player Search Form
 
@@ -81,14 +116,13 @@ function ballDontLie(player) {
     failed();
   });
     xhttp.send();
-  console.log("players:", xhttp);
 }
 
 //Team Page
 
-function ballDontLieTeamInfo() {
+function ballDontLieTeamInfo(id) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/team/');
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams/' + id);
   xhttp.responseType = 'json';
   xhttp.addEventListener('load', function () {
     const queryData = ['city', 'conference', 'division'];
@@ -109,12 +143,13 @@ function ballDontLieTeamInfo() {
     failed();
   });
   xhttp.send();
+  console.log("team info:", xhttp);
 }
 
-$teamoption.addEventListener('submit', function (e) {
+$teamselectform.addEventListener('submit', function (e) {
   $teaminfobody.innerHTML = '';
   e.preventDefault();
-  ballDontLie($homepageteams.value);
+  ballDontLieTeam($homepageteams.value);
   const storage = [];
   $homepage.classList.add('hidden');
   $teamprofilepage.classList.remove('hidden');
@@ -155,6 +190,7 @@ function ballDontLieSeasonAvg(season, id) {
     failed();
   });
   xhttp.send();
+  console.log("player stats:", xhttp);
 }
 
 $playersearchform.addEventListener('submit', function (e) {
@@ -204,3 +240,5 @@ $playersearchform.addEventListener('submit', function (e) {
 //     }
 //   }
 // }
+
+// get players from specific teams

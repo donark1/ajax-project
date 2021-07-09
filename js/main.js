@@ -77,6 +77,18 @@ function ballDontLieTeam(team) {
     if (xhttp.status === 200) {
       $teamname.textContent = team;
       }
+    const queryData = ['city', 'conference', 'division'];
+    const $tr = document.createElement('tr');
+    $tr.classList.add(queryData[0]);
+    for (var i = 0; i <= queryData.length - 1; i++) {
+
+        const $td = document.createElement('td');
+        $td.textContent = xhttp.response.data[0][queryData[i]];
+        $td.classList.add(queryData[i]);
+        $tr.appendChild($td);
+
+    }
+    $teaminfobody.appendChild($tr);
   });
   xhttp.addEventListener('error', function () {
     failed();
@@ -120,31 +132,35 @@ function ballDontLie(player) {
 
 //Team Page
 
-function ballDontLieTeamInfo(id) {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams/' + id);
-  xhttp.responseType = 'json';
-  xhttp.addEventListener('load', function () {
-    const queryData = ['city', 'conference', 'division'];
-    const $tr = document.createElement('tr');
-    $tr.classList.add(queryData[0]);
-    for (var i = 0; i <= queryData.length - 1; i++) {
-      if (xhttp.response.data[0] !== undefined) {
-        const $td = document.createElement('td');
-        $td.textContent = xhttp.response.data[0][queryData[i]];
-        $td.classList.add(queryData[i]);
-        $tr.appendChild($td);
-      }
-    }
-    $teaminfobody.appendChild($tr);
-
-  });
-  xhttp.addEventListener('error', function () {
-    failed();
-  });
-  xhttp.send();
-  console.log("team info:", xhttp);
-}
+// function ballDontLieTeamInfo() {
+//   const xhttp = new XMLHttpRequest();
+//   xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams/');
+//   xhttp.responseType = 'json';
+//   xhttp.addEventListener('load', function () {
+//     const queryData = ['city', 'conference', 'division'];
+//     const $tr = document.createElement('tr');
+//     $tr.classList.add(queryData[0]);
+//     for (var i = 0; i <= queryData.length - 1; i++) {
+//       if (xhttp.response.data[0] !== undefined) {
+//         const $td = document.createElement('td');
+//         $td.textContent = xhttp.response.data[0][queryData[i]];
+//         $td.classList.add(queryData[i]);
+//         $tr.appendChild($td);
+//       }
+//     }
+//     $teaminfobody.appendChild($tr);
+//     for (var x = 1; x <= queryData.length - 1; x++) {
+//       const name = '.' + queryData[x];
+//       const teamInfo = document.querySelectorAll(teamInfo);
+//       storage.push(teamInfo);
+//     }
+//   });
+//   xhttp.addEventListener('error', function () {
+//     failed();
+//   });
+//   xhttp.send();
+//   console.log("team info:", xhttp);
+// }
 
 $teamselectform.addEventListener('submit', function (e) {
   $teaminfobody.innerHTML = '';
@@ -154,9 +170,6 @@ $teamselectform.addEventListener('submit', function (e) {
   $homepage.classList.add('hidden');
   $teamprofilepage.classList.remove('hidden');
   $headerlink.classList.remove('hidden');
-  if ($teamname.textContent === 'Team Name') {
-    $teamname.textContent = 'Team not found. Please try again.'
-  }
   $homepageteams.value = '';
 });
 

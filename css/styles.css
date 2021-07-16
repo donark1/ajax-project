@@ -67,3 +67,7 @@ table {
 tr {
   text-align: center;
 }
+
+th {
+  text-decoration: underline;
+}

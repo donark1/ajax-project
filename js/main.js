@@ -1,4 +1,4 @@
-const $bannertextlink = document.querySelector('.banner-text-link')
+const $bannertextlink = document.querySelector('.banner-text-link');
 const $headerlink = document.querySelector('.headerlink');
 const $homepageplayers = document.querySelector('.homepageplayers');
 const $homepage = document.querySelector('.homepage');
@@ -73,22 +73,23 @@ function ballDontLieTeam(team) {
   xhttp.addEventListener('loadstart', function () {
   });
   xhttp.addEventListener('load', function () {
-    const storage = [];
-    if (xhttp.status === 200) {
-      $teamname.textContent = team;
-      }
-    const queryData = ['city', 'conference', 'division'];
+    for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
+    if (xhttp.response.data[i].fullname = team) {
+    xhttp.response.data.forEach(teams => {
+    const queryTeamData = ['city', 'conference', 'division'];
     const $tr = document.createElement('tr');
-    $tr.classList.add(queryData[0]);
-    for (var i = 0; i <= queryData.length - 1; i++) {
-
+    $teamname.textContent = team;
+    for (var i = 0; i <= queryTeamData.length; i++) {
         const $td = document.createElement('td');
-        $td.textContent = xhttp.response.data[0][queryData[i]];
-        $td.classList.add(queryData[i]);
+        $td.textContent = teams[queryTeamData[i]];
         $tr.appendChild($td);
-
     }
-    $teaminfobody.appendChild($tr);
+      $teaminfobody.appendChild($tr);
+      console.log("teams:", teams);
+      console.log("teamsquery:", teams[queryTeamData[i]]);
+  });
+    }
+  }
   });
   xhttp.addEventListener('error', function () {
     failed();
@@ -96,6 +97,33 @@ function ballDontLieTeam(team) {
   xhttp.send();
   console.log("teams:", xhttp);
 }
+
+// function ballDontLieTeam(team) {
+//   const xhttp = new XMLHttpRequest();
+//   xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams');
+//   xhttp.responseType = 'json';
+//   xhttp.addEventListener('loadstart', function () {
+//   });
+//   xhttp.addEventListener('load', function () {
+//     const queryTeamData = ['city', 'conference', 'division'];
+//     const $tr = document.createElement('tr');
+//     $teamname.textContent = team;
+//     for (var i = 0; i <= queryTeamData.length - 1; i++) {
+//       if (xhttp.response.data[0] !== undefined) {
+//         const $td = document.createElement('td');
+//         $td.textContent = xhttp.response.data[0][queryTeamData[i]];
+//         $td.classList.add(queryTeamData[i]);
+//         $tr.appendChild($td);
+//       }
+//     }
+//     $teaminfobody.appendChild($tr);
+//   });
+//   xhttp.addEventListener('error', function () {
+//     failed();
+//   });
+//   xhttp.send();
+//   console.log("teams:", xhttp);
+// }
 
 // Player Search Form
 

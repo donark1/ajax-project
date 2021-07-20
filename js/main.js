@@ -73,57 +73,27 @@ function ballDontLieTeam(team) {
   xhttp.addEventListener('loadstart', function () {
   });
   xhttp.addEventListener('load', function () {
-    for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
-    if (xhttp.response.data[i].fullname = team) {
     xhttp.response.data.forEach(teams => {
-    const queryTeamData = ['city', 'conference', 'division'];
-    const $tr = document.createElement('tr');
-    $teamname.textContent = team;
-    for (var i = 0; i <= queryTeamData.length; i++) {
+    console.log("teamfullname:", teams.full_name);
+    if (teams.full_name === team) {
+      const queryTeamData = ['city', 'conference', 'division'];
+      const $tr = document.createElement('tr');
+      $teamname.textContent = team;
+      for (var i = 0; i <= queryTeamData.length; i++) {
         const $td = document.createElement('td');
         $td.textContent = teams[queryTeamData[i]];
         $tr.appendChild($td);
-    }
+      }
       $teaminfobody.appendChild($tr);
-      console.log("teams:", teams);
-      console.log("teamsquery:", teams[queryTeamData[i]]);
-  });
     }
-  }
+  });
+
   });
   xhttp.addEventListener('error', function () {
     failed();
   });
   xhttp.send();
-  console.log("teams:", xhttp);
 }
-
-// function ballDontLieTeam(team) {
-//   const xhttp = new XMLHttpRequest();
-//   xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams');
-//   xhttp.responseType = 'json';
-//   xhttp.addEventListener('loadstart', function () {
-//   });
-//   xhttp.addEventListener('load', function () {
-//     const queryTeamData = ['city', 'conference', 'division'];
-//     const $tr = document.createElement('tr');
-//     $teamname.textContent = team;
-//     for (var i = 0; i <= queryTeamData.length - 1; i++) {
-//       if (xhttp.response.data[0] !== undefined) {
-//         const $td = document.createElement('td');
-//         $td.textContent = xhttp.response.data[0][queryTeamData[i]];
-//         $td.classList.add(queryTeamData[i]);
-//         $tr.appendChild($td);
-//       }
-//     }
-//     $teaminfobody.appendChild($tr);
-//   });
-//   xhttp.addEventListener('error', function () {
-//     failed();
-//   });
-//   xhttp.send();
-//   console.log("teams:", xhttp);
-// }
 
 // Player Search Form
 
@@ -159,36 +129,6 @@ function ballDontLie(player) {
 }
 
 //Team Page
-
-// function ballDontLieTeamInfo() {
-//   const xhttp = new XMLHttpRequest();
-//   xhttp.open('GET', 'https://www.balldontlie.io/api/v1/teams/');
-//   xhttp.responseType = 'json';
-//   xhttp.addEventListener('load', function () {
-//     const queryData = ['city', 'conference', 'division'];
-//     const $tr = document.createElement('tr');
-//     $tr.classList.add(queryData[0]);
-//     for (var i = 0; i <= queryData.length - 1; i++) {
-//       if (xhttp.response.data[0] !== undefined) {
-//         const $td = document.createElement('td');
-//         $td.textContent = xhttp.response.data[0][queryData[i]];
-//         $td.classList.add(queryData[i]);
-//         $tr.appendChild($td);
-//       }
-//     }
-//     $teaminfobody.appendChild($tr);
-//     for (var x = 1; x <= queryData.length - 1; x++) {
-//       const name = '.' + queryData[x];
-//       const teamInfo = document.querySelectorAll(teamInfo);
-//       storage.push(teamInfo);
-//     }
-//   });
-//   xhttp.addEventListener('error', function () {
-//     failed();
-//   });
-//   xhttp.send();
-//   console.log("team info:", xhttp);
-// }
 
 $teamselectform.addEventListener('submit', function (e) {
   $teaminfobody.innerHTML = '';
@@ -247,39 +187,3 @@ $playersearchform.addEventListener('submit', function (e) {
   }
   $homepageplayers.value = '';
 });
-
-// //page fails to load
-// function failed() {
-//   for (var i = 0; i <= $loading.length - 1; i++) {
-//     if (i !== 5) {
-//       $loading[i].classList.add('hidden');
-//     } else {
-//       $loading[i].classList.remove('hidden');
-//       $bannertextlink.classList.remove('hidden');
-//     }
-//   }
-// }
-
-// //loading page
-// function loading() {
-//   for (var i = 0; i <= $playerprofilepage.length - 1; i++) {
-//     if (i !== 6) {
-//       $playerprofilepage.classList.add('hidden');
-//     } else {
-//       $playerprofilepage.classList.remove('hidden');
-//     }
-//   }
-// }
-
-// //loads different pages depending on the click event that is triggered
-// function viewSwap(index) {
-//   for (var i = 0; i <= $loading.length - 1; i++) {
-//     if (i === index) {
-//       $loading[i].classList.remove('hidden');
-//     } else {
-//       $loading[i].classList.add('hidden');
-//     }
-//   }
-// }
-
-// get players from specific teams

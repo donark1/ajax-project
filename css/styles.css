@@ -1,8 +1,8 @@
-.homepageteamform, .homepageplayerform{
+.homepageteamform, .homepageplayerform, .homepagegameyearform{
   padding-bottom: 2%;
 }
 
-.teamsselect, .searchplayers  {
+.teamsselect, .searchplayers, .gameyearselect  {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 2%;
@@ -12,7 +12,11 @@
   color:black;
 }
 
-.playersearchform, .teamselectform {
+.homepagegameyear option {
+  color:black;
+}
+
+.playersearchform, .teamselectform, .gameyearselectform {
   display: flex;
   align-items: stretch;
 }
@@ -21,7 +25,7 @@
   text-align: center;
 }
 
-.homepageplayers, .homepageteams {
+.homepageplayers, .homepageteams, .homepagegameyear {
   text-align-last:center;
   padding: 0 1rem;
   height: 3rem;

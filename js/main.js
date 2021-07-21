@@ -1,8 +1,12 @@
 const $bannertextlink = document.querySelector('.banner-text-link');
+const $gameyearselectform = document.querySelector('.gameyearselectform');
+const $gameprofilepage = document.querySelector('.gameprofilepage');
 const $headerlink = document.querySelector('.headerlink');
-const $homepageplayers = document.querySelector('.homepageplayers');
 const $homepage = document.querySelector('.homepage');
+const $homepagegameyear = document.querySelector('.homepagegameyear');
+const $homepageplayers = document.querySelector('.homepageplayers');
 const $homepageteams = document.querySelector('.homepageteams');
+const $gameinfobody = document.querySelector('.gameinfobody');
 const $loading = document.querySelector('.loading');
 const $playername = document.querySelector('.playername');
 const $playerprofilepage = document.querySelector('.playerprofilepage');
@@ -49,20 +53,27 @@ function getTeams() {
 }
 getTeams();
 
-// Get all players
 
-function getAllPlayers() {
+// Get Games
+
+function getGames(season) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/players');
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/games?seasons=' + season);
   xhttp.responseType = 'json',
-
-  xhttp.addEventListener('error', function () {
-    failed();
-  });
+  xhttp.addEventListener('load', function () {
+    for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
+      const $option = document.createElement('option');
+      $option.textContent = xhttp.response.data[i].season;
+      $homepagegameyear.appendChild($option);
+      }
+    });
+    xhttp.addEventListener('error', function () {
+      failed();
+    });
   xhttp.send();
-  console.log("All Players:", xhttp);
+  console.log("Games:", xhttp);
 }
-getAllPlayers();
+getGames();
 
 // Team Search Form
 
@@ -128,6 +139,37 @@ function ballDontLie(player) {
     xhttp.send();
 }
 
+//Game Search Form
+
+function ballDontLieTeam(game) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/games');
+  xhttp.responseType = 'json';
+  xhttp.addEventListener('loadstart', function () {
+  });
+  xhttp.addEventListener('load', function () {
+    xhttp.response.data.forEach(teams => {
+      console.log("teamfullname:", teams.full_name);
+      if (teams.full_name === team) {
+        const queryTeamData = ['city', 'conference', 'division'];
+        const $tr = document.createElement('tr');
+        $teamname.textContent = team;
+        for (var i = 0; i <= queryTeamData.length; i++) {
+          const $td = document.createElement('td');
+          $td.textContent = teams[queryTeamData[i]];
+          $tr.appendChild($td);
+        }
+        $gameinfobody.appendChild($tr);
+      }
+    });
+
+  });
+  xhttp.addEventListener('error', function () {
+    failed();
+  });
+  xhttp.send();
+}
+
 //Team Page
 
 $teamselectform.addEventListener('submit', function (e) {
@@ -186,4 +228,17 @@ $playersearchform.addEventListener('submit', function (e) {
     $playername.textContent = 'Player not found. Please try again.'
   }
   $homepageplayers.value = '';
+});
+
+//Game Page
+
+$gameyearselectform.addEventListener('submit', function (e) {
+  $gameinfobody.innerHTML = '';
+  e.preventDefault();
+  ballDontLieTeam($homepagegameyear.value);
+  const storage = [];
+  $homepage.classList.add('hidden');
+  $gameprofilepage.classList.remove('hidden');
+  $headerlink.classList.remove('hidden');
+  $homepagegameyear.value = '';
 });

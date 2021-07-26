@@ -1,8 +1,8 @@
-.homepageteamform, .homepageplayerform, .homepagegameyearform{
+.homepageteamform, .homepageplayerform, .homepagegamedateform{
   padding-bottom: 2%;
 }
 
-.teamsselect, .searchplayers, .gameyearselect  {
+.teamsselect, .searchplayers, .gamedateselect  {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 2%;
@@ -12,20 +12,20 @@
   color:black;
 }
 
-.homepagegameyear option {
+/* .homepagegamedate option {
   color:black;
-}
+} */
 
-.playersearchform, .teamselectform, .gameyearselectform {
+.playersearchform, .teamselectform, .gamedateselectform {
   display: flex;
   align-items: stretch;
 }
 
-.playername, .teamname {
+.playername, .teamname, .gamedate {
   text-align: center;
 }
 
-.homepageplayers, .homepageteams, .homepagegameyear {
+.homepageplayers, .homepageteams, .homepagegamedate {
   text-align-last:center;
   padding: 0 1rem;
   height: 3rem;
@@ -52,6 +52,10 @@
 
 .homepageplayers::placeholder {
   color: white;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
 
 .hidden {

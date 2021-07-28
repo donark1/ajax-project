@@ -53,28 +53,6 @@ function getTeams() {
 }
 getTeams();
 
-
-// Get Games
-
-function getGames(season) {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/games');
-  xhttp.responseType = 'json',
-  xhttp.addEventListener('load', function () {
-    for (var i = 0; i <= xhttp.response.data.length - 1; i++) {
-      const $option = document.createElement('option');
-      $option.textContent = xhttp.response.data[i].season;
-      $homepagegamedate.appendChild($option);
-      }
-    });
-    xhttp.addEventListener('error', function () {
-      failed();
-    });
-  xhttp.send();
-  console.log("Games:", xhttp);
-}
-getGames();
-
 // Team Search Form
 
 function ballDontLieTeam(team) {
@@ -93,11 +71,10 @@ function ballDontLieTeam(team) {
         const $td = document.createElement('td');
         $td.textContent = teams[queryTeamData[i]];
         $tr.appendChild($td);
-      }
+        }
       $teaminfobody.appendChild($tr);
-    }
-  });
-
+      }
+    });
   });
   xhttp.addEventListener('error', function () {
     failed();
@@ -138,11 +115,12 @@ function ballDontLie(player) {
     xhttp.send();
 }
 
+
 //Game Search Form
 
-function ballDontLieTeam(game) {
+function ballDontLieGame(game) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/games');
+  xhttp.open('GET', 'https://www.balldontlie.io/api/v1/games?seasons[]=2020&per_page=100&page=11');
   xhttp.responseType = 'json';
   xhttp.addEventListener('loadstart', function () {
   });
@@ -216,7 +194,6 @@ function ballDontLieSeasonAvg(season, id) {
     failed();
   });
   xhttp.send();
-  console.log("player stats:", xhttp);
 }
 
 $playersearchform.addEventListener('submit', function (e) {
@@ -238,7 +215,7 @@ $playersearchform.addEventListener('submit', function (e) {
 $gamedateselectform.addEventListener('submit', function (e) {
   $gameinfobody.innerHTML = '';
   e.preventDefault();
-  ballDontLieTeam($homepagegamedate.value);
+  ballDontLieGame($homepagegamedate.value);
   const storage = [];
   $homepage.classList.add('hidden');
   $gameprofilepage.classList.remove('hidden');

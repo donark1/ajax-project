@@ -91,7 +91,6 @@ function ballDontLie(player) {
   xhttp.addEventListener('loadstart', function () {
   });
   xhttp.addEventListener('load', function () {
-    const storage = [];
     if (xhttp.status === 200) {
       $tablestatsbody.innerHTML = '';
       const firstLast = player.split(' ');
@@ -157,7 +156,6 @@ $teamselectform.addEventListener('submit', function (e) {
   $teaminfobody.innerHTML = '';
   e.preventDefault();
   ballDontLieTeam($homepageteams.value);
-  const storage = [];
   $homepage.classList.add('hidden');
   $teamprofilepage.classList.remove('hidden');
   $headerlink.classList.remove('hidden');
@@ -183,12 +181,6 @@ function ballDontLieSeasonAvg(season, id) {
       }
     }
     $tablestatsbody.appendChild($tr);
-
-    for (var x = 1; x <= queryData.length - 1; x++) {
-      const name = '.' + queryData[x];
-      const statClass = document.querySelectorAll(name);
-      storage.push(statClass);
-    }
   });
   xhttp.addEventListener('error', function () {
     failed();
@@ -200,7 +192,6 @@ $playersearchform.addEventListener('submit', function (e) {
   $tablestatsbody.innerHTML = '';
   e.preventDefault();
   ballDontLie($homepageplayers.value);
-  const storage = [];
   $homepage.classList.add('hidden');
   $playerprofilepage.classList.remove('hidden');
   $headerlink.classList.remove('hidden');
@@ -216,7 +207,6 @@ $gamedateselectform.addEventListener('submit', function (e) {
   $gameinfobody.innerHTML = '';
   e.preventDefault();
   ballDontLieGame($homepagegamedate.value);
-  const storage = [];
   $homepage.classList.add('hidden');
   $gameprofilepage.classList.remove('hidden');
   $headerlink.classList.remove('hidden');

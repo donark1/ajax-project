@@ -9,6 +9,7 @@ const $homepageplayers = document.querySelector('.homepageplayers');
 const $homepageteams = document.querySelector('.homepageteams');
 const $gameinfobody = document.querySelector('.gameinfobody');
 const $loading = document.querySelector('.loading');
+const $nextbutton = document.querySelector('.nextbutton');
 const $playername = document.querySelector('.playername');
 const $playerprofilepage = document.querySelector('.playerprofilepage');
 const $playersearchform = document.querySelector('.playersearchform');
@@ -84,7 +85,7 @@ function ballDontLieTeam(team) {
 
 // Player Search Form
 
-function ballDontLie(player) {
+function ballDontLiePlayer(player) {
   const xhttp = new XMLHttpRequest();
   xhttp.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + player);
   xhttp.responseType = 'json';
@@ -113,7 +114,6 @@ function ballDontLie(player) {
   });
     xhttp.send();
 }
-
 
 //Game Search Form
 
@@ -191,7 +191,7 @@ function ballDontLieSeasonAvg(season, id) {
 $playersearchform.addEventListener('submit', function (e) {
   $tablestatsbody.innerHTML = '';
   e.preventDefault();
-  ballDontLie($homepageplayers.value);
+  ballDontLiePlayer($homepageplayers.value);
   $homepage.classList.add('hidden');
   $playerprofilepage.classList.remove('hidden');
   $headerlink.classList.remove('hidden');
@@ -211,4 +211,24 @@ $gamedateselectform.addEventListener('submit', function (e) {
   $gameprofilepage.classList.remove('hidden');
   $headerlink.classList.remove('hidden');
   $homepagegamedate.value = '';
+});
+
+//Go Back Function
+
+function goBack() {
+  window.history.back();
+}
+
+// Next/Search Button
+
+$nextbutton.addEventListener('click', () => {
+  const target = event.target;
+  const currentDataView = target.getAttribute('data-view');
+
+  if (currentDataView === 'search') {
+    $('#searchplayer').empty();
+
+    ballDontLiePlayer();
+  }
+
 });

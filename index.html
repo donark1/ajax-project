@@ -58,8 +58,8 @@
             </div>
             <form class="playersearchform">
               <input type="search" name="searchplayer" id="searchplayer"
-                class="homepageplayers" placeholder="TYPE PLAYER NAME" autocomplete="off">
-              <button type="submit" class="searchbutton" id="searchbutton" data-view="search">
+                class="homepageplayers" placeholder="FIRSTNAME LASTNAME" autocomplete="off">
+              <button type="submit" class="nextbutton" id="searchbutton" data-view="search">
               <i class="fas fa-search"></i>
               </button>
             </form>
@@ -80,7 +80,6 @@
             <form class="gamedateselectform">
               <input class="homepagegamedate" type="date" min="2021-03-01" max="2021-05-31">
               <button type="submit" id="nextbutton" class="nextbutton"><i class="fas fa-angle-right"></i></button>
-
             </form>
           </div>
         </div>
@@ -95,11 +94,18 @@
           <h1 class="teamname">Team Name</h1>
         </div>
 
+        <div class="back">
+          <form>
+            <button onclick="goBack()" class="back-button"><i class="fas fa-chevron-circle-left"></i>
+            </button>
+          </form>
+        </div>
+
         <div class="row">
           <h3>Info:</h3>
         </div>
 
-        <div class="overflow">
+        <div class="row">
           <table class="margin-top-half teaminfo">
             <thead>
               <tr>
@@ -118,6 +124,13 @@
 
         <div class="row">
           <h1 class="playername">Player Name</h1>
+        </div>
+
+        <div class="back">
+          <form>
+            <button onclick="goBack()" class="back-button"><i class="fas fa-chevron-circle-left"></i>
+            </button>
+          </form>
         </div>
 
         <div class="block player-info">
@@ -154,6 +167,13 @@
 
         <div class="row">
           <h1 class="gamedate">No Games Scheduled</h1>
+        </div>
+
+        <div class="back">
+          <form>
+            <button onclick="goBack()" class="back-button"><i class="fas fa-chevron-circle-left"></i>
+            </button>
+          </form>
         </div>
 
         <div class="row">

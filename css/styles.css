@@ -12,10 +12,6 @@
   color:black;
 }
 
-/* .homepagegamedate option {
-  color:black;
-} */
-
 .playersearchform, .teamselectform, .gamedateselectform {
   display: flex;
   align-items: stretch;
@@ -39,7 +35,7 @@
   width: 100%;
 }
 
-.searchbutton, .nextbutton {
+.nextbutton {
   width: 65px;
   height: 3rem;
   font-size: 1.5rem;
@@ -48,6 +44,7 @@
   background-image: url("../images/basketballbanner.jpg");
   border-top-right-radius: 1.25rem;
   border-bottom-right-radius: 1.25rem;
+  cursor: pointer;
 }
 
 .homepageplayers::placeholder {
@@ -65,7 +62,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 .overflow {
   overflow: auto;
   margin-right: 2px;
-  margin-left: 2px
+  margin-left: 2px;
 }
 
 table {
@@ -79,4 +76,16 @@ tr {
 
 th {
   text-decoration: underline;
+}
+
+.back-button {
+  border: none;
+  background-color: white;
+  font-size: 25px;
+  cursor: pointer;
+
+}
+
+.back {
+  text-align: center;
 }

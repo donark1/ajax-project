@@ -1,19 +1,22 @@
 const $bannertextlink = document.querySelector('.banner-text-link');
 const $gamedate = document.querySelector('.gamedate');
 const $gamedateselectform = document.querySelector('.gamedateselectform');
+const $gameinfobody = document.querySelector('.gameinfobody');
 const $gameprofilepage = document.querySelector('.gameprofilepage');
 const $headerlink = document.querySelector('.headerlink');
 const $homepage = document.querySelector('.homepage');
 const $homepagegamedate = document.querySelector('.homepagegamedate');
 const $homepageplayers = document.querySelector('.homepageplayers');
 const $homepageteams = document.querySelector('.homepageteams');
-const $gameinfobody = document.querySelector('.gameinfobody');
+const input = document.getElementById('input');
 const $loading = document.querySelector('.loading');
-const $nextbutton = document.querySelector('.nextbutton');
+const nextbutton = document.getElementById('nextbutton');
 const $playername = document.querySelector('.playername');
 const $playerprofilepage = document.querySelector('.playerprofilepage');
 const $playersearchform = document.querySelector('.playersearchform');
 const $position = document.querySelector('.position');
+const search = document.getElementById('search');
+const searchbutton = document.getElementById('searchbutton');
 const $tablestats = document.querySelector('.tablestats');
 const $tablestatsbody = document.querySelector('.tablestatsbody');
 const $team = document.querySelector('.team');
@@ -105,7 +108,7 @@ function ballDontLiePlayer(player) {
           ballDontLieSeasonAvg(i, playerID);
         }
       } else {
-        $playername.textContent = 'Player Name';
+        $playername.textContent = 'Player not found. Please try again.';
       }
     }
   });
@@ -221,14 +224,10 @@ function goBack() {
 
 // Next/Search Button
 
-$nextbutton.addEventListener('click', () => {
-  const target = event.target;
-  const currentDataView = target.getAttribute('data-view');
-
-  if (currentDataView === 'search') {
-    $('#searchplayer').empty();
-
-    ballDontLiePlayer();
-  }
-
-});
+// input.addEventListener("input", function (e) {
+//   if (input.value === '') {
+//     nextbutton.disabled = true
+//   } else {
+//     nextbutton.disabled = false
+//   }
+// })

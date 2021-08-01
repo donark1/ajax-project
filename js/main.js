@@ -2,28 +2,30 @@ const $bannertextlink = document.querySelector('.banner-text-link');
 const $gamedate = document.querySelector('.gamedate');
 const $gamedateselectform = document.querySelector('.gamedateselectform');
 const $gameinfobody = document.querySelector('.gameinfobody');
+const gamenextbutton = document.getElementById('gamenextbutton');
 const $gameprofilepage = document.querySelector('.gameprofilepage');
+const gametask = document.getElementById('gametask');
 const $headerlink = document.querySelector('.headerlink');
 const $homepage = document.querySelector('.homepage');
 const $homepagegamedate = document.querySelector('.homepagegamedate');
 const $homepageplayers = document.querySelector('.homepageplayers');
 const $homepageteams = document.querySelector('.homepageteams');
-const input = document.getElementById('input');
 const $loading = document.querySelector('.loading');
-const nextbutton = document.getElementById('nextbutton');
 const $playername = document.querySelector('.playername');
+const playernextbutton = document.getElementById('playernextbutton');
 const $playerprofilepage = document.querySelector('.playerprofilepage');
 const $playersearchform = document.querySelector('.playersearchform');
+const playertask = document.getElementById('playertask');
 const $position = document.querySelector('.position');
-const search = document.getElementById('search');
-const searchbutton = document.getElementById('searchbutton');
 const $tablestats = document.querySelector('.tablestats');
 const $tablestatsbody = document.querySelector('.tablestatsbody');
 const $team = document.querySelector('.team');
 const $teaminfobody = document.querySelector('.teaminfobody');
 const $teamname = document.querySelector('.teamname');
+const teamnextbutton = document.getElementById('teamnextbutton');
 const $teamprofilepage = document.querySelector('.teamprofilepage');
 const $teamselectform = document.querySelector('.teamselectform');
+const teamtask = document.getElementById('teamtask');
 
 const previousDataJson = localStorage.getItem('playerData');
 if (previousDataJson !== null) {
@@ -86,6 +88,18 @@ function ballDontLieTeam(team) {
   xhttp.send();
 }
 
+// Team Next Button Disable
+
+teamnextbutton.disabled = true;
+
+teamtask.addEventListener("input", function (e) {
+  if (teamtask.value.length == 0) {
+    teamnextbutton.disabled = true;
+  } else {
+    teamnextbutton.disabled = false;
+  }
+})
+
 // Player Search Form
 
 function ballDontLiePlayer(player) {
@@ -117,6 +131,18 @@ function ballDontLiePlayer(player) {
   });
     xhttp.send();
 }
+
+// Player Next Button Disable
+
+playernextbutton.disabled = true;
+
+playertask.addEventListener("input", function (e) {
+  if (playertask.value.length == 0) {
+    playernextbutton.disabled = true;
+  } else {
+    playernextbutton.disabled = false;
+  }
+})
 
 //Game Search Form
 
@@ -152,6 +178,18 @@ function ballDontLieGame(game) {
   });
   xhttp.send();
 }
+
+// Game Next Button Disable
+
+gamenextbutton.disabled = true;
+
+gametask.addEventListener("input", function (e) {
+  if (gametask.value.length == 0) {
+    gamenextbutton.disabled = true;
+  } else {
+    gamenextbutton.disabled = false;
+  }
+})
 
 //Team Page
 
@@ -221,13 +259,3 @@ $gamedateselectform.addEventListener('submit', function (e) {
 function goBack() {
   window.history.back();
 }
-
-// Next/Search Button
-
-// input.addEventListener("input", function (e) {
-//   if (input.value === '') {
-//     nextbutton.disabled = true
-//   } else {
-//     nextbutton.disabled = false
-//   }
-// })
